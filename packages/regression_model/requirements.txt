@@ -9,4 +9,12 @@ numpy>=2.3.0,<3.0.0
 pandas>=2.3.0,<3.0.0
 scikit-learn>=1.7.0,<2.0.0
 joblib>=1.5.1,<1.6.0
+
+# testing
 pytest>=7.4.0,<8.0.0
+
+# packaging
+setuptools>=65.7.0,<65.8.0
+wheel>=0.40.0,<0.41.0
+
+tox>=4.32.0,<4.33.0
