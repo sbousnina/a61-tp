@@ -1,4 +1,6 @@
-# Guide rapide pour démarrer le projet
+# cours-A61
+
+Préparation de la solution d'IA pour la mise en production
 
 ## 1. Créer et activer l'environnement virtuel
 
