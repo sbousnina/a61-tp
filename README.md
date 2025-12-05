@@ -23,7 +23,7 @@ pip list
 ## 3. (Optionnel) Activer un autre environnement
 
 ```bash
-source ~/Documents/dev/python/cours-6/env_mlflow/Scripts/activate
+source /c/Users/slimbousnina/OneDrive/Documents/dev/python/cours-6/env_mlflow/Scripts/activate
 ```
 
 ## 4. Désactiver l'environnement
