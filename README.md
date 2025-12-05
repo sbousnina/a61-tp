@@ -6,7 +6,7 @@ Préparation de la solution d'IA pour la mise en production
 
 ```bash
 python -m venv env_mlflow
-source ~/Documents/dev/python/cours-6/env_mlflow/Scripts/activate
+source ~/OneDrive/Documents/dev/python/cours-6/env_mlflow/Scripts/activate
 ```
 
 ## 2. Installer les dépendances
@@ -30,4 +30,11 @@ source ~/Documents/dev/python/cours-6/env_mlflow/Scripts/activate
 
 ```bash
 deactivate
+```
+
+## 5. Exécuter tox
+
+```bash
+pip install tox
+tox
 ```

@@ -48,7 +48,7 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
     def transform(self, X):
         X = X.copy()
         for feature in self.variables:
-            X[feature].fillna(self.imputer_dict_[feature], inplace=True)
+            X[feature] = X[feature].fillna(self.imputer_dict_[feature])
         return X
 
 
@@ -91,7 +91,7 @@ class RareLabelCategoricalEncoder(BaseEstimator, TransformerMixin):
 
         for var in self.variables:
             # the encoder will learn the most frequent categories
-            t = pd.Series(X[var].value_counts() / np.float(len(X)))
+            t = pd.Series(X[var].value_counts() / float(len(X)))
             # frequent labels:
             self.encoder_dict_[var] = list(t[t >= self.tol].index)
 
