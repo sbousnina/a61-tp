@@ -22,7 +22,7 @@ def get_console_handler():
 
 def get_file_handler():
     file_handler = TimedRotatingFileHandler(
-        LOG_FILE, when='midnight')
+        LOG_FILE, when='midnight', delay=True)
     file_handler.setFormatter(FORMATTER)
     file_handler.setLevel(logging.WARNING)
     return file_handler

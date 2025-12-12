@@ -37,14 +37,30 @@ def predict():
         input_data, errors = validate_inputs(input_data=json_data)
 
         # Step 3: Model prediction
-        result = make_prediction(input_data=input_data)
-        _logger.debug(f'Outputs: {result}')
+        result = None
+        predictions = None
+        version = None
+        
+        if errors:
+            _logger.warning(f"Validation errors: {errors}")
+            return jsonify({'predictions': predictions,
+                            'version': version,
+                            'errors': errors})
 
-        # Step 4: Convert numpy ndarray to list
-        predictions = result.get('predictions').tolist()
-        version = result.get('version')
+        try:
+            result = make_prediction(input_data=input_data)
+            _logger.debug(f'Outputs: {result}')
 
-        # Step 5: Return the response as JSON
-        return jsonify({'predictions': predictions,
-                        'version': version,
-                        'errors': errors})
+            # Step 4: Convert numpy ndarray to list
+            predictions = result.get('predictions').tolist()
+            version = result.get('version')
+
+            # Step 5: Return the response as JSON
+            return jsonify({'predictions': predictions,
+                            'version': version,
+                            'errors': errors})
+        except Exception as e:
+            _logger.error(f"Prediction failed: {e}")
+            return jsonify({'predictions': None,
+                            'version': None,
+                            'errors': f"Model prediction failed: {e}"}), 400

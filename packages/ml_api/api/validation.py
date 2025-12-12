@@ -122,8 +122,9 @@ def validate_inputs(input_data):
     # convert syntax error field names (beginning with numbers)
     for dict in input_data:
         for key, value in SYNTAX_ERROR_FIELD_MAP.items():
-            dict[value] = dict[key]
-            del dict[key]
+            if key in dict:
+                dict[value] = dict[key]
+                del dict[key]
 
     errors = None
     try:
@@ -136,8 +137,9 @@ def validate_inputs(input_data):
     # fields with numbers as the first letter.
     for dict in input_data:
         for key, value in SYNTAX_ERROR_FIELD_MAP.items():
-            dict[key] = dict[value]
-            del dict[value]
+            if value in dict:
+                dict[key] = dict[value]
+                del dict[value]
 
     if errors:
         validated_input = _filter_error_rows(
